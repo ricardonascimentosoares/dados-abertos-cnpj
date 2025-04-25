@@ -2,6 +2,11 @@
 
 This project provides tools to download, process, and analyze public data from the Brazilian Federal Revenue's National Registry of Legal Entities (CNPJ). It facilitates the extraction and transformation of large-scale datasets into a structured format suitable for analysis and integration.
 
+In case you need just to analyze the output data, you can download it here:
+https://drive.google.com/file/d/1SgMhyuMWgBWrrBc5H-Raj_-hJlK8k1y8/view?usp=sharing
+
+You can follow this [section](#query-the-database) how to query it using python and duckdb.
+
 ---
 
 ## 📁 Project Structure
@@ -167,17 +172,33 @@ The project follows these steps:
    cd dados-abertos-cnpj
    ```
 
-### **3. Download CNPJ Data**
-   Obtain the latest CNPJ data files from the Receita Federal's open data portal:
-   [https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj](https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj)
+### 3. Run the Processing Script
+Execute the main script to process the data:
 
-### **4. Run the Processing Script**
-   Execute the main script to process the downloaded data:
-   ```bash
+```bash
    python main.py
    ```
 
+The script will:
+
+- Download and extract the latest CNPJ data.
+- Process and load the data into DuckDB.
+- Create auxiliary tables.
+- Log any quality control issues.
+
    *Note*: Ensure that the downloaded data files are placed in the appropriate directory as expected by the script.
+
+### 4. Query the Database<a id="query-the-database"></a>
+You can query the dados_abertos_cnpj.db database using DuckDB's Python API or any SQL client:
+
+```python
+import duckdb
+
+conn = duckdb.connect("output/dados_abertos_cnpj.db")
+conn.sql("SHOW TABLES").show()
+conn.sql("SELECT * FROM estabelecimentos LIMIT 10").show()
+conn.close()
+```
 
 ## 🌟 Possible Improvements
 
