@@ -2,12 +2,16 @@
 
 This project provides tools to download, process, and analyze public data from the Brazilian Federal Revenue's National Registry of Legal Entities (CNPJ). It facilitates the extraction and transformation of large-scale datasets into a structured format suitable for analysis and integration.
 
+---
+
 ## 📁 Project Structure
 
 - **`main.py`**: Primary script that orchestrates the data processing pipeline.
 - **`requirements.txt`**: Lists Python dependencies required to run the project.
 - **`cnpj-metadados.pdf`**: Documentation detailing the layout and structure of the CNPJ data files.
 - **`src/`**: Directory containing auxiliary modules and scripts used in data processing.
+
+---
 
 ## 📦 Output Information
 
@@ -114,15 +118,37 @@ Predefined lookup tables:
 
 ## 🛠️ Technical Details and Tools Used
 
-- **Programming Language**: Python
+- **Language**: Python
 - **Database**: DuckDB for efficient analytical queries.
 - **Libraries**:
   - `requests`: For HTTP requests to download files.
   - `beautifulsoup4`: For scraping download links from the Receita Federal website.
-  - `tqdm`: For progress bars during downloads.
   - `duckdb`: For database operations.
   - `pyarrow`: For handling Parquet files (if needed in the future).
 - **Data Sources**: Downloads data from the official Receita Federal portal: [dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj).
+
+---
+
+## 🚀 How the Project Works
+
+The project follows these steps:
+
+1. **Dynamic URL Resolution**:
+   - Automatically identifies the most recent CNPJ data available on the Receita Federal website.
+
+2. **Download and Extraction**:
+   - Downloads ZIP files containing CSV data.
+   - Extracts the CSV files into a structured directory.
+
+3. **Data Transformation and Loading**:
+   - Converts CSV files to UTF-8 encoding.
+   - Loads data into DuckDB using SQL transformations defined in `sql_templates.py`.
+
+4. **Auxiliary Table Creation**:
+   - Creates predefined lookup tables (e.g., company size, registration status).
+
+5. **Quality Control**:
+   - Logs row mismatches and skips invalid files.
 
 ---
 
