@@ -23,12 +23,12 @@ def process_download(link):
 
 def main():
     # Step 1: Download and extract files
-    # print("Starting download process...")
-    # download_links = get_download_links(BASE_URL)
-    # print(f"Found {len(download_links)} files to download.")
+    print("Starting download process...")
+    download_links = get_download_links(BASE_URL)
+    print(f"Found {len(download_links)} files to download.")
 
-    # with ThreadPoolExecutor(max_workers=10) as executor:
-    #     list(executor.map(process_download, download_links))
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        list(executor.map(process_download, download_links))
 
     # Step 2: Process extracted files
     print("\nStarting ETL process...")
