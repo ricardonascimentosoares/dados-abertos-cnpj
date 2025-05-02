@@ -39,9 +39,10 @@ def main():
         processor.process_folder(folder_name, folder_path)
 
     # Step 3: Remove extracted files
-    # remove_extracted_files(EXTRACT_DIR)
+    remove_extracted_files(EXTRACT_DIR)
 
     print("All processes completed successfully.")
+    print("Check the output directory for results.")
 
 if __name__ == "__main__":
     main()

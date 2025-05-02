@@ -186,7 +186,8 @@ AUX_TABLES_SQL = [
         (0, 'NÃO INFORMADO'),
         (1, 'MICRO EMPRESA'),
         (3, 'EMPRESA DE PEQUENO PORTE'),
-        (5, 'DEMAIS');
+        (5, 'DEMAIS')
+        ON CONFLICT DO NOTHING;
     """,
 
     # Table: aux_identificador_matriz_filial
@@ -197,7 +198,8 @@ AUX_TABLES_SQL = [
     );
     INSERT INTO aux_identificador_matriz_filial (codigo, descricao) VALUES
         (1, 'MATRIZ'),
-        (2, 'FILIAL');
+        (2, 'FILIAL')
+        ON CONFLICT DO NOTHING;
     """,
 
     # Table: aux_situacao_cadastral
@@ -211,7 +213,8 @@ AUX_TABLES_SQL = [
         (2, 'ATIVA'),
         (3, 'SUSPENSA'),
         (4, 'INAPTA'),
-        (8, 'BAIXADA');
+        (8, 'BAIXADA')
+        ON CONFLICT DO NOTHING;
     """,
 
     # Table: aux_identificador_socio
@@ -223,7 +226,8 @@ AUX_TABLES_SQL = [
     INSERT INTO aux_identificador_socio (codigo, descricao) VALUES
         (1, 'PESSOA JURÍDICA'),
         (2, 'PESSOA FÍSICA'),
-        (3, 'ESTRANGEIRO');
+        (3, 'ESTRANGEIRO')
+        ON CONFLICT DO NOTHING;
     """,
 
     # Table: aux_faixa_etaria
@@ -242,6 +246,7 @@ AUX_TABLES_SQL = [
         (6, '51 a 60 anos'),
         (7, '61 a 70 anos'),
         (8, '71 a 80 anos'),
-        (9, 'Mais de 80 anos');
+        (9, 'Mais de 80 anos')
+        ON CONFLICT DO NOTHING;;
     """
 ]
