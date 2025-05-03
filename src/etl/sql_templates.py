@@ -172,6 +172,20 @@ SQL_INSERT_TEMPLATES = {
             escape='"',
             encoding='utf-8',
             all_varchar=True)
+    """,
+    "motivos": """
+        INSERT INTO motivos
+        SELECT 
+            codigo::smallint as codigo,
+            descricao
+        FROM read_csv('{csv_file}',
+            delim=';',
+            header=False,
+            column_names={metadata},
+            quote='"',
+            escape='"',
+            encoding='utf-8',
+            all_varchar=True)
     """
 }
 

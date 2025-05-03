@@ -82,5 +82,9 @@ METADATA = {
     "qualificacoes": {
         "codigo": "SMALLINT",
         "descricao": "VARCHAR"
+    },
+    "motivos": {
+        "codigo": "SMALLINT",
+        "descricao": "VARCHAR"
     }
 }
